@@ -1,6 +1,72 @@
+*{
+    margin:0;
+}
+html{
+    
+    min-height: 100%;
+    
+    position: relative;
+    
+}
 body{
-    width:100vw;
-    height: 100vh;
-    background-color: black;
+    height: 95%;
+    box-sizing: border-box;
+    background-color: goldenrod;
     color: cornsilk;
+}
+header{
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid blue;
+    height: 10%;
+    padding-top: 30px;
+}
+.scoreBoard{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-board{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin-top: 30px;
+}
+.play-options{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+img{
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 97%;
+    padding: 10px;
+    
+    font-size: 20px;
+}
+.github-logo{
+    width: 20px;
+    height:20px;
+    transition: all 300ms linear;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px red;
+    box-shadow: 0px 0px 5px white;
+    margin-left: 6px;
+}
+.github-logo:hover{
+        transform: rotate(360deg) scale(1.3);
 }
