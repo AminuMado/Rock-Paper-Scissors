@@ -139,12 +139,12 @@ function addOverlay(){
 }
 
 function setPlayerSelection(playerInput){
-    updatePlayerSelection.src = `IMG/SVG/${playerInput}.svg`;
+    updatePlayerSelection.src = `IMG/${playerInput}.svg`;
     updatePlayerSelection.style.visibility = "unset";
 
 }
 function setComputerSelection(computerInput){
- updateComputerSelection.src= `IMG/SVG/${computerInput}.svg`;
+ updateComputerSelection.src= `IMG/${computerInput}.svg`;
  updateComputerSelection.style.visibility= "unset";   
 }
 function getInputFromComputer(){
