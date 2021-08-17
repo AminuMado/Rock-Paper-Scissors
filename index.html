@@ -6,23 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"> <!-- For the icons  -->
+
 </head>
 <body>
     <header>
         <h1>Rock Paper Scissors</h1>
     </header>
-    <div class="scoreBoard">
-        <p>Score</p>
-        <p>Player</p>
-        <p>:0</p>
-        <p>Computer</p>
-        <p>:0</p>
+    <div class="score-board">
+        <h2 class="score-header">Score</h2>
+        <div class="score-board-container">
+            <div class= "player-score-container">
+                <p class="player-score">Player :0</p>
+                <img id="player-selection" src="IMG/SVG/Paper.svg">
+            </div>
+            <div class="computer-score-container">
+                <p class="computer-score">Computer :0</p>
+                <img id="computer-selection" src="IMG/SVG/Scissors.svg">
+            </div>
+        </div>
+       
     </div>
-    <div class="playOptions">
-        <div class="rock"><button>Rock</button></div>
-        <div class="paper"><button>Paper</button></div>
-        <div class="scissors"><button>Scissors</button></div>
+    <div class="play-options">
+        <div class="rock">
+            <img id="rock" src="IMG/SVG/rock.svg">
+        </div>
+        <div class="paper">
+            <img id="paper" src="IMG/SVG/paper.svg">
+        </div>
+        <div class="scissors">
+            <img id="scissors" src="IMG/SVG/scissors.svg">
+        </div>
     </div>
+    <footer class="footer">
+            <p>Copyright © 2021 AminuMado</p>
+            <a href="https://github.com/AminuMado" target="_blank">
+            <img class="github-logo"src="../github-logo.svg"></a>
+    </footer>
 </body>
+<div id="overlay">
+    <div id="text" class="start">
+        <p id="result">You Win!!!</p>
+        <p>Play again?</p>
+        <button>Restart</button>
+    </div>
+  </div>
 <script src="main.js"></script>
 </html>

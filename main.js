@@ -8,11 +8,7 @@ function getInputFromPlayer(){
     return prompt('Rock Paper or Scissors').toLowerCase();  
 }
  
-function getInputFromComputer(){
-    let randomNumber = Math.floor(Math.random()*3);
-    const computerOptions = ['rock','paper','scissors'];
-    return computerOptions[randomNumber];
-}
+
 
 if( playerInput === 'rock' && computerInput === 'scissors'){
     alert(`You Win!! ${playerInput} beats ${computerInput}`);
@@ -38,7 +34,7 @@ if(playerInput === computerInput){
     alert(`Tie you both selected ${computerInput}`);
 }; */
 
-function playRound(playerSelection, computerSelection) {
+/* function playRound(playerSelection, computerSelection) {
             //Game Rules: Win Conditions
         if( playerSelection === 'rock' && computerSelection === 'scissors'){
             playerScore++
@@ -85,7 +81,7 @@ function playRound(playerSelection, computerSelection) {
         const computerSelection = computerPlay();
        let result = playRound(playerSelection,computerSelection);
 
-        console.log(result);
+        
         
      }
      if(playerScore > computerScore){
@@ -97,4 +93,130 @@ function playRound(playerSelection, computerSelection) {
          console.log(`Its a tie you final score is Player ${playerScore}:Computer ${computerScore}`)
      }
  }
- game();
+  */
+let playerInput = "";
+let computerInput="";
+let playerScore = 0;
+let computerScore =0;
+let fiveRounds = false;
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors")
+const updatePlayerScore = document.getElementsByClassName("player-score")[0];
+const updateComputerScore = document.getElementsByClassName("computer-score")[0];
+const updateScoreHeader = document.getElementsByClassName("score-header")[0];
+const updatePlayerSelection = document.getElementById("player-selection");
+const updateComputerSelection = document.getElementById("computer-selection");
+const overlay = document.getElementById("overlay");
+const gameResult = document.getElementById("text");
+const resetButton = document.querySelector("button");
+const result = document.getElementById("result");
+ 
+function addClass(){
+    gameResult.classList.add("end");   
+}
+function removeOverlay(){
+    overlay.style.display="none"
+    gameResult.classList.remove("end");
+}
+function gameEnd(){
+    if(playerScore === 5){
+        fiveRounds = true;
+        result.textContent="You Win!!";
+    }
+    if(computerScore === 5){
+        fiveRounds = true;
+        result.textContent="You Lost!!";
+    }
+    return
+}
+function addOverlay(){
+    if(fiveRounds){
+
+        overlay.style.display="block";
+        setTimeout(addClass,10);
+    }
+}
+
+function setPlayerSelection(playerInput){
+    updatePlayerSelection.src = `IMG/SVG/${playerInput}.svg`;
+    updatePlayerSelection.style.visibility = "unset";
+
+}
+function setComputerSelection(computerInput){
+ updateComputerSelection.src= `IMG/SVG/${computerInput}.svg`;
+ updateComputerSelection.style.visibility= "unset";   
+}
+function getInputFromComputer(){
+    let randomNumber = Math.floor(Math.random()*3);
+    const computerOptions = ['rock','paper','scissors'];
+    return computerOptions[randomNumber];
+};
+
+function playRound(playerInput, computerInput) {
+    //Game Rules: Win Conditions
+    if( playerInput === 'rock' && computerInput === 'scissors'|| 
+        playerInput === 'paper' && computerInput === 'rock'||
+        playerInput === 'scissors' && computerInput === 'paper'){
+
+            playerScore++
+            updatePlayerScore.textContent=`Player: ${playerScore}`;
+            updateScoreHeader.textContent=(`You Won!!`);
+            setPlayerSelection(playerInput);
+            setComputerSelection(computerInput);
+
+        };
+    //Game Rules: Loss Conditions
+    if( playerInput === 'rock' && computerInput === 'paper'||
+        playerInput === 'paper' && computerInput === 'scissors'||
+        playerInput === 'scissors' && computerInput === 'rock'){
+
+        computerScore++
+        updateComputerScore.textContent=`Computer: ${computerScore}`;
+        updateScoreHeader.textContent=(`You Lost!`);
+        setPlayerSelection(playerInput);
+        setComputerSelection(computerInput);
+
+    };
+    //Game Rules: Tie Condition
+    if(playerInput === computerInput){
+    updateScoreHeader.textContent=(`It's a Tie`);
+    setPlayerSelection(playerInput);
+    setComputerSelection(computerInput);
+    };
+};
+
+ rock.addEventListener("click",function(){
+     playerInput="rock";
+     computerInput = getInputFromComputer();
+     playRound(playerInput,computerInput);
+     gameEnd();
+     addOverlay();
+ });
+ paper.addEventListener("click",function(){
+    playerInput="paper";
+    computerInput = getInputFromComputer();
+    playRound(playerInput,computerInput);
+    gameEnd();
+    addOverlay();
+});
+scissors.addEventListener("click",function(){
+    playerInput="scissors";
+    computerInput = getInputFromComputer();
+    playRound(playerInput,computerInput);
+    gameEnd();
+    addOverlay();
+})
+resetButton.addEventListener("click",function(){
+    playerInput = "";
+    computerInput="";
+    playerScore = 0;
+    updatePlayerScore.textContent=`Player: ${playerScore}`;
+    computerScore = 0;
+    updateComputerScore.textContent=`Computer: ${computerScore}`;
+    updateScoreHeader.textContent=`Score`;
+    updatePlayerSelection.style.visibility = "hidden";
+    updateComputerSelection.style.visibility= "hidden";
+    removeOverlay();
+    fiveRounds = false;
+})
